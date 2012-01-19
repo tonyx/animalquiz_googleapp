@@ -1,0 +1,1 @@
+don't include in build (servlet.jar may conflict with jetty)
