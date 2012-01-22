@@ -1,6 +1,5 @@
 package org.tonyzt.animalquiz.model;
 
-import org.tonyzt.animalquiz.view.StateViewContext;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,7 +24,7 @@ public interface IAnimalQuiz {
 
     void adjustCurrentNode(String answer);
     
-    public StateViewContext getStateViewContext();
+    //public StateViewContext getStateViewContext();
 
     void storeKnowledgeTree(INode node);
 

@@ -47,7 +47,6 @@ public class DefaultEnglishTextSpeaker implements Speaker,Serializable {
 
     @Override
     public void forgetAll() {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

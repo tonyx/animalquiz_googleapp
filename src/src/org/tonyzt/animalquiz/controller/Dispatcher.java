@@ -23,13 +23,8 @@ import java.util.Map;
  */
 public class Dispatcher  {
     private static Dispatcher instance = null;
-    
-    //List<DispatchingStep> dispatchingSteps;
-    
-    Map<Condition,StateView> conditionAction;
-    
+
     private Dispatcher() {
-        conditionAction = new HashMap<Condition, StateView>();
     }
 
     public static synchronized Dispatcher getInstance() {
@@ -42,10 +37,7 @@ public class Dispatcher  {
     // ok I surrender: put here all the control based behavior
     public void doAction(HttpServletRequest request, HttpServletResponse response, IAnimalQuiz animalQuiz)  throws IOException {
         if (animalQuiz==null) {
-            Memoizer memoizer = new Memoizer();
-
             animalQuiz = AnimalQuiz.getProductionAnimalQuiz();
-            //animalQuiz = new AnimalQuiz(new HtmlSpeakerWithResetAndSaveButton(new DefaultEnglishTextSpeaker()),memoizer, new GEngineRepository());
             request.getSession().setAttribute("animalQuizInstance",animalQuiz);
         }
 
@@ -70,8 +62,17 @@ public class Dispatcher  {
             return;
         }
 
-        animalQuiz.getStateViewContext().doAction(animalQuiz,request,response);
+        String resetPar = request.getParameter("reset");
+        if (resetPar!=null) {
+            animalQuiz = AnimalQuiz.getProductionAnimalQuiz();
+            request.getSession().setAttribute("animalQuizInstance",animalQuiz);
+        }
 
+        String par = request.getParameter("interaction");
+        response.getWriter().print(animalQuiz.step(par));
+        request.getSession().setAttribute("animalQuizInstance",animalQuiz);
+
+        //animalQuiz.getStateViewContext().doAction(animalQuiz,request,response);
         // debug
         response.getWriter().print("you can contribute to select the next features for this " +
                 "game voting the user stories <a href =\"https://trello.com/board/animalquiz/4eb509e38f42f468e70846c8\"> here</a><br/>");
@@ -82,9 +83,5 @@ public class Dispatcher  {
 
         response.getWriter().print("The project is in java and is done using test driven development, it is a variant of the code that can be found here: <a href = \"https://github.com/tonyx/newanimalquiz\"> https://github.com/tonyx/newanimalquiz</a><br/>");
         response.getWriter().print("Please note that there is no undo or rollback.  I can just restart the knowledge based from scratch if someone will mess it up! ;-) <br/>");
-
-        //response.getWriter().print(animalQuiz.getKnowledge());
-
-
     }
 }

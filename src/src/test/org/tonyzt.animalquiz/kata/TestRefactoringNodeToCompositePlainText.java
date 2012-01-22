@@ -42,9 +42,9 @@ public class TestRefactoringNodeToCompositePlainText {
     public void whenClickOkAtTheFirstPageSholdAskIfItIsAnElephant() throws Exception {
         // given
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
+        animalQuiz.step("");
 
         // when
-        animalQuiz.step("");
         String firstQuestion = animalQuiz.step("");
 
         // then
@@ -86,11 +86,11 @@ public class TestRefactoringNodeToCompositePlainText {
         // given
         //AnimalQuiz animalQuiz = new AnimalQuiz(new LeafNode("elephant"),new DefaultEnglishTextSpeaker(),new Memoizer(),fakeRepository);
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
-
-        // when
         animalQuiz.step("");
         animalQuiz.step("");
         animalQuiz.step("no");
+
+        // when
         String message = animalQuiz.step("mouse");
 
         // then
@@ -103,13 +103,12 @@ public class TestRefactoringNodeToCompositePlainText {
         // given
         //AnimalQuiz animalQuiz = new AnimalQuiz(new LeafNode("elephant"),new DefaultEnglishTextSpeaker(),new Memoizer(),fakeRepository);
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
-
-
-        // when
         animalQuiz.step("");
         animalQuiz.step("");
         animalQuiz.step("no");
         animalQuiz.step("mouse");
+
+        // when
         String message = animalQuiz.step("is it small?");
 
         // then
@@ -120,14 +119,15 @@ public class TestRefactoringNodeToCompositePlainText {
 
     @Test
     public void shouldSayThankYouAfterLearnedMouseFromElephant() throws Exception {
+        // given
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
-
-        // when
         animalQuiz.step("");
         animalQuiz.step("");
         animalQuiz.step("no");
         animalQuiz.step("mouse");
         animalQuiz.step("is it small?");
+
+        // when
         String message = animalQuiz.step("yes");
 
         // then
@@ -140,14 +140,14 @@ public class TestRefactoringNodeToCompositePlainText {
         // given
         //AnimalQuiz animalQuiz = new AnimalQuiz(new LeafNode("elephant"),new DefaultEnglishTextSpeaker(),new Memoizer(),fakeRepository);
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
-
-        // when
         animalQuiz.step("");
         animalQuiz.step("");
         animalQuiz.step("no");
         animalQuiz.step("mouse");
         animalQuiz.step("is it small?");
         animalQuiz.step("yes");
+
+        // when
         String message = animalQuiz.step("");
 
         // then
@@ -162,16 +162,15 @@ public class TestRefactoringNodeToCompositePlainText {
         // given
         //AnimalQuiz animalQuiz = new AnimalQuiz(new LeafNode("elephant"),new DefaultEnglishTextSpeaker(),new Memoizer(),fakeRepository);
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
-
-        // when
         learnToDistinguishElephantAndMouse(animalQuiz);
         animalQuiz.step("");
+
+        // when
         String message = animalQuiz.step("");
 
         // then
         Assert.assertNotNull(animalQuiz.getCurrentNode());
         Assert.assertNotNull(animalQuiz.getKnowledge());
-
         Assert.assertEquals("is it small?",message);
 
     }
@@ -179,12 +178,11 @@ public class TestRefactoringNodeToCompositePlainText {
     @Test
     public void learnMouseAndGuessIt() throws Exception  {
         // given
-        //AnimalQuiz animalQuiz = new AnimalQuiz(new LeafNode("elephant"),new DefaultEnglishTextSpeaker(),new Memoizer(),fakeRepository);
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
-
-        // when
         learnToDistinguishElephantAndMouse(animalQuiz);
         animalQuiz.step("");
+
+        // when
         String message = animalQuiz.step("yes");
 
         // then
@@ -198,11 +196,11 @@ public class TestRefactoringNodeToCompositePlainText {
         // given
         //AnimalQuiz animalQuiz = new AnimalQuiz(new LeafNode("elephant"),new DefaultEnglishTextSpeaker(),new Memoizer(),fakeRepository);
         IAnimalQuiz animalQuiz = AnimalQuiz.getUnitTestableAnimalQuiz();
-
-        // when
         learnToDistinguishElephantAndMouse(animalQuiz);
         animalQuiz.step("");
         animalQuiz.step("no");
+
+        // when
         String message = animalQuiz.step("no");
 
         // then

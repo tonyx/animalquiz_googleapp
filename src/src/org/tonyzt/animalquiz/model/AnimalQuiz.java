@@ -2,7 +2,7 @@ package org.tonyzt.animalquiz.model;
 
 import org.tonyzt.animalquiz.repository.GEngineRepository;
 import org.tonyzt.animalquiz.repository.Repository;
-import org.tonyzt.animalquiz.view.StateViewContext;
+//import org.tonyzt.animalquiz.view.StateViewContext;
 import org.tonyzt.animalquiz.model.state.StateContext;
 import org.tonyzt.animalquiz.view.speakers.DefaultEnglishTextSpeaker;
 import org.tonyzt.animalquiz.view.speakers.HtmlSpeakerWithResetAndSaveButton;
@@ -27,7 +27,6 @@ public class AnimalQuiz implements Serializable,IAnimalQuiz {
     private static final long serialVersionUID = 2773364923500997535L;
     String lastStepOutputMemory;
     StateContext stateContext;
-    StateViewContext stateViewContext;
 
     INode knowledge;
     INode currentNode;
@@ -44,19 +43,12 @@ public class AnimalQuiz implements Serializable,IAnimalQuiz {
         this.repository=repository;
         knowledge = loadDefaultNode();
         currentNode=knowledge;
-
         stateContext = new StateContext(this, speaker,memoizer);
-        stateViewContext = new StateViewContext();
     }
 
     @Override
     public INode getCurrentNode() {
         return currentNode;
-    }
-
-    @Override
-    public StateViewContext getStateViewContext() {
-        return this.stateViewContext;
     }
 
     @Override

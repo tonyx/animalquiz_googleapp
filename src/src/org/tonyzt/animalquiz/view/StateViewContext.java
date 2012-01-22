@@ -20,7 +20,6 @@ public class StateViewContext implements Serializable {
 
     private static final long serialVersionUID = 6734394581429125656L;
     StateView currentStateview;
-    public StateViewContext stateViewContext;
     public StateViewContext() {
         this.currentStateview = new HandleReset();
     }
