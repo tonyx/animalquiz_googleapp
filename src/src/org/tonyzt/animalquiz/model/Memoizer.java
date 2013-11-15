@@ -84,6 +84,7 @@ public class Memoizer implements Serializable {
         this.yesNoList = new ArrayList<String>();
     }
 
+    // wtf?! :D
     public void addYesNo(Speaker speaker, String yesNo) {
         if (!speaker.isNotYesOrNot(yesNo))
             yesNoList.add(yesNo);
