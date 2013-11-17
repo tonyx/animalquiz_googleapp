@@ -1,13 +1,10 @@
 package org.tonyzt.animalquiz.model;
 
+import org.tonyzt.animalquiz.model.state.StateContext;
 import org.tonyzt.animalquiz.repository.GEngineRepository;
 import org.tonyzt.animalquiz.repository.Repository;
-//import org.tonyzt.animalquiz.view.StateViewContext;
-import org.tonyzt.animalquiz.model.state.StateContext;
 import org.tonyzt.animalquiz.view.speakers.DefaultEnglishTextSpeaker;
 import org.tonyzt.animalquiz.view.speakers.HtmlSpeakerWithResetAndSaveButton;
-
-
 
 import java.io.Serializable;
 import java.util.logging.Logger;
@@ -35,8 +32,16 @@ public class AnimalQuiz implements Serializable,IAnimalQuiz {
         return new AnimalQuiz(new HtmlSpeakerWithResetAndSaveButton(new DefaultEnglishTextSpeaker()), new Memoizer(), new GEngineRepository());
     }
 
+//    public static IAnimalQuiz getProductionAnimalQuiz() {
+//        return new AnimalQuiz(new HtmlSpeaker(new DefaultEnglishTextSpeaker()), new Memoizer(), new GEngineRepository());
+//    }
+
     public static IAnimalQuiz getUnitTestableAnimalQuiz() {
         return new AnimalQuiz(new DefaultEnglishTextSpeaker(), new Memoizer(), new FakeRepository(new LeafNode("elephant")));
+    }
+
+    public static IAnimalQuiz getUnitTestableAnimalQuiz(Repository repository) {
+        return new AnimalQuiz(new DefaultEnglishTextSpeaker(), new Memoizer(), repository);
     }
 
     private AnimalQuiz(Speaker speaker, Memoizer memoizer,Repository repository) {
@@ -80,6 +85,7 @@ public class AnimalQuiz implements Serializable,IAnimalQuiz {
         this.knowledge=node;
     }
 
+
     @Override
     public String getLastStepOutputMemory() {
         return lastStepOutputMemory;
@@ -109,7 +115,6 @@ public class AnimalQuiz implements Serializable,IAnimalQuiz {
         this.repository.storeRootNode(node);
 
     }
-
 
 }
 

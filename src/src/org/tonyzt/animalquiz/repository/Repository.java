@@ -12,5 +12,5 @@ import org.tonyzt.animalquiz.model.INode;
 public interface Repository {
      INode loadNode();
      void storeRootNode(INode node);
-    void resetMemory();
+     void resetMemory();
 }

@@ -18,7 +18,6 @@ public interface IAnimalQuiz {
 
     void setKnowledge(INode node);
 
-    String getLastStepOutputMemory();
 
     String step(String answer);
 
@@ -31,4 +30,6 @@ public interface IAnimalQuiz {
     void loadKnowledgeTree(INode currentNode);
 
     void removeKnowledge();
+
+    String getLastStepOutputMemory();
 }

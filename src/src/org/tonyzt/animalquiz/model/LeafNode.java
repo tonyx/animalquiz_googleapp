@@ -2,9 +2,6 @@ package org.tonyzt.animalquiz.model;
 import org.tonyzt.animalquiz.model.state.GuessMade;
 import org.tonyzt.animalquiz.model.state.StateContext;
 
-import javax.jdo.annotations.*;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
