@@ -2,6 +2,10 @@ package org.tonyzt.animalquiz.model;
 import org.tonyzt.animalquiz.model.state.GuessMade;
 import org.tonyzt.animalquiz.model.state.StateContext;
 
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 
 /**
@@ -14,10 +18,7 @@ import java.io.Serializable;
 public class LeafNode implements INode, Serializable {
 
     private static final long serialVersionUID = 7619538467544476807L;
- //   @PrimaryKey
 
-
-    //@Persistent
     String animal;
     
     public LeafNode(String animal) {

@@ -63,7 +63,6 @@ public class Memoizer implements Serializable {
         return this.discriminatingQuestion;
     }
 
-
     public void setLearningAnimal(String animal) {
         this.learningAnimal=animal;
     }
@@ -84,9 +83,8 @@ public class Memoizer implements Serializable {
         this.yesNoList = new ArrayList<String>();
     }
 
-    // wtf?! :D
     public void addYesNo(Speaker speaker, String yesNo) {
-        if (!speaker.isNotYesOrNot(yesNo))
+        if (!speaker.isNotYesOrNot(yesNo)) // wtf?! :D
             yesNoList.add(yesNo);
     }
     

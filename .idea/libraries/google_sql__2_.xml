@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="google_sql (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/google/impl/google_sql.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/lib/google/impl/google_sql.jar!/" />
+    </SOURCES>
+  </library>
+</component>

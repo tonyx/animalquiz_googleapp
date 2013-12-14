@@ -2,6 +2,9 @@ package org.tonyzt.animalquiz.model;
 
 import org.tonyzt.animalquiz.model.state.StateContext;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 
 /**
@@ -11,11 +14,17 @@ import java.io.Serializable;
  * Time: 17.35
  * To change this template use File | Settings | File Templates.
  */
+//@PersistenceCapable
 public class NonLeafNode implements INode, Serializable {
 
     private static final long serialVersionUID = -2985931738045143040L;
+//    @PrimaryKey
+//    @Persistent
     String question;
-    INode  yesBranch,noBranch;
+//    @Persistent
+    INode  yesBranch;
+//    @Persistent
+    INode noBranch;
     public NonLeafNode(INode yesBranch,String question,INode noBranch ) {
         this.yesBranch=yesBranch;
         this.question=question;

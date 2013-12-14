@@ -5,6 +5,8 @@ import org.tonyzt.animalquiz.model.INode;
 import org.tonyzt.animalquiz.model.LeafNode;
 import org.tonyzt.animalquiz.utils.Base64Coder;
 
+import javax.jdo.JDOObjectNotFoundException;
+import javax.jdo.PersistenceManager;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -60,6 +62,24 @@ public class GEngineRepository implements Repository,Serializable {
             localEntity.setProperty("encodedNode",new Text(Base64Coder.toString((Serializable)node)));
             localEntity.setProperty("name","anyName");
             ds.put(localEntity);
+
+//            // todo added this was in experimenting the pojo way in storing object
+
+//            System.out.println("storing");
+//            PersistenceManager pm = PMF.get().getPersistenceManager();
+//            pm.currentTransaction().begin();
+//            try {
+//                pm.makePersistent(node);
+//                pm.currentTransaction().commit();
+//            }
+//            finally {
+//                if (pm.currentTransaction().isActive()) {
+//                    pm.currentTransaction().rollback();
+//                }
+//            }
+//            pm.close();
+
+
         } catch (IOException ie) {
             System.out.println(ie);
         }
@@ -71,3 +91,23 @@ public class GEngineRepository implements Repository,Serializable {
         removeKnowledge();
     }
 }
+
+//    public void addUser(String userName) {
+//        PersistenceManager pm = getPersistenceManagerInstance();
+//        Key userKey = KeyFactory.createKey(User.class.getSimpleName(),userName);
+//
+//        pm.currentTransaction().begin();
+//        try {
+//            pm.getObjectById(User.class,userKey);
+//        } catch (JDOObjectNotFoundException e)  {
+//            User user = new User(userName,userKey);
+//            pm.makePersistent(user);
+//            pm.currentTransaction().commit();
+//        }
+//        finally {
+//            if (pm.currentTransaction().isActive()) {
+//                pm.currentTransaction().rollback();
+//            }
+//        }
+//        pm.close();
+//    }
